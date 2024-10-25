@@ -14,6 +14,7 @@ public class Board : MonoBehaviour
 
     // LOGIC
     private Cards[,] Cards;
+    private Cards currentlyDragging;
     private const int TILE_COUNT_X = 8;
     private const int TILE_COUNT_Y = 8;
     private GameObject[,] tiles;
@@ -57,6 +58,36 @@ public class Board : MonoBehaviour
                 currentHover = hitPosition;
                 tiles[hitPosition.x, hitPosition.y].layer = LayerMask.NameToLayer("Hover");
             }
+
+            // If we press down on the mouse
+            if(Input.GetMouseButtonDown(0))
+            {
+                if(Cards[hitPosition.x, hitPosition.y] != null)
+                {
+                    // Is it our turn?
+                    if(true)
+                    {
+                        currentlyDragging = Cards[hitPosition.x, hitPosition.y];
+                    }
+                }
+            }
+
+            // If we are releasing the mouse button
+            if(currentlyDragging != null && Input.GetMouseButtonUp(0))
+            {
+                Vector2Int previousPosition = new Vector2Int(currentlyDragging.currentX, currentlyDragging.currentY);
+
+                bool validMove = MoveTo(currentlyDragging, hitPosition.x, hitPosition.y);
+                if(!validMove)
+                {
+                    currentlyDragging.SetPosition(GetTileCenter(previousPosition.x, previousPosition.y));
+                    currentlyDragging = null;
+                }
+                else
+                {
+                    currentlyDragging = null;
+                }
+            }
         }
         else
         {
@@ -64,6 +95,12 @@ public class Board : MonoBehaviour
             {
                 tiles[currentHover.x, currentHover.y].layer = LayerMask.NameToLayer("Tile");
                 currentHover = -Vector2Int.one;
+            }
+
+            if(currentlyDragging && Input.GetMouseButtonUp(0))
+            {
+                currentlyDragging.SetPosition(GetTileCenter(currentlyDragging.currentX, currentlyDragging.currentY));
+                currentlyDragging = null;
             }
         }
     }
@@ -165,9 +202,12 @@ public class Board : MonoBehaviour
 
     private void PositionSingleCard(int x, int y, bool force = false)
     {
-        Cards[x, y].currentX = x;
-        Cards[x, y].currentY = y;
-        Cards[x, y].transform.position = GetTileCenter(x, y);
+        if (Cards[x, y] != null)  // Adicione esta verificação
+        {
+            Cards[x, y].currentX = x;
+            Cards[x, y].currentY = y;
+            Cards[x, y].SetPosition(GetTileCenter(x, y), force);
+        }
     }
 
     private Vector3 GetTileCenter(int x, int y)
@@ -184,5 +224,28 @@ public class Board : MonoBehaviour
                     return new Vector2Int(x, y);
 
         return -Vector2Int.one; // Invalid
+    }
+
+    private bool MoveTo(Cards cp, int x, int y)
+    {
+        Vector2Int previousPosition = new Vector2Int(cp.currentX, cp.currentY);
+
+        // Is ther another card on the target position?
+        if(Cards[x, y] != null)
+        {
+            Cards ocp = Cards[x, y];
+
+            if(cp.team == ocp.team)
+            {
+                return false;
+            }
+        }
+
+        Cards[x,y] = cp;
+        Cards[previousPosition.x, previousPosition.y] = null;
+
+        PositionSingleCard(x, y);
+
+        return true;
     }
 }
