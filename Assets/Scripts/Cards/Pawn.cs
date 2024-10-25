@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class NewBehaviourScript : Cards
+public class Pawn : Cards
 {
     
 }

@@ -6,7 +6,10 @@ public enum CardPieceType
     Rook = 1,
     Bishop = 2,
     Queen = 3,
-    King = 4
+    King = 4,
+    Knight = 5,
+    Pawn = 6
+
 }
 
 public class Cards : MonoBehaviour

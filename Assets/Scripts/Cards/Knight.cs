@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Knigth : Cards
+public class Knight : Cards
 {
     
 }

@@ -13,6 +13,7 @@ public class Board : MonoBehaviour
     [SerializeField] private Material[] teamMaterials;
 
     // LOGIC
+    private Cards[,] Cards;
     private const int TILE_COUNT_X = 8;
     private const int TILE_COUNT_Y = 8;
     private GameObject[,] tiles;
@@ -23,8 +24,8 @@ public class Board : MonoBehaviour
     private void Awake()
     {
         GenerateAllTiles(tileSize, TILE_COUNT_X, TILE_COUNT_Y);
-
-        SpawnSingleCard(CardPieceType.King, 0);
+        SpawnAllCards();
+        PositionAllCards();
     }
 
     private void Update()
@@ -109,7 +110,33 @@ public class Board : MonoBehaviour
     // Spawning of the cards
     private void SpawnAllCards()
     {
+        Cards = new Cards[TILE_COUNT_X, TILE_COUNT_Y];
 
+        int whiteTeam = 0, blackTeam = 1;
+
+        // White team
+        Cards[0,0] = SpawnSingleCard(CardPieceType.Rook, whiteTeam);
+        Cards[1,0] = SpawnSingleCard(CardPieceType.Knight, whiteTeam);
+        Cards[2,0] = SpawnSingleCard(CardPieceType.Bishop, whiteTeam);
+        Cards[3,0] = SpawnSingleCard(CardPieceType.King, whiteTeam);
+        Cards[4,0] = SpawnSingleCard(CardPieceType.Queen, whiteTeam);
+        Cards[5,0] = SpawnSingleCard(CardPieceType.Bishop, whiteTeam);
+        Cards[6,0] = SpawnSingleCard(CardPieceType.Knight, whiteTeam);
+        Cards[7,0] = SpawnSingleCard(CardPieceType.Rook, whiteTeam);
+        for (int i = 0; i < TILE_COUNT_X; i++)
+            Cards[i,1] = SpawnSingleCard(CardPieceType.Pawn, whiteTeam);
+
+        // Black team
+        Cards[0,7] = SpawnSingleCard(CardPieceType.Rook, blackTeam);
+        Cards[1,7] = SpawnSingleCard(CardPieceType.Knight, blackTeam);
+        Cards[2,7] = SpawnSingleCard(CardPieceType.Bishop, blackTeam);
+        Cards[3,7] = SpawnSingleCard(CardPieceType.King, blackTeam);
+        Cards[4,7] = SpawnSingleCard(CardPieceType.Queen, blackTeam);
+        Cards[5,7] = SpawnSingleCard(CardPieceType.Bishop, blackTeam);
+        Cards[6,7] = SpawnSingleCard(CardPieceType.Knight, blackTeam);
+        Cards[7,7] = SpawnSingleCard(CardPieceType.Rook, blackTeam);
+        for (int i = 0; i < TILE_COUNT_X; i++)
+            Cards[i,6] = SpawnSingleCard(CardPieceType.Pawn, blackTeam);
     }
 
     private Cards SpawnSingleCard(CardPieceType type, int team)
@@ -125,6 +152,27 @@ public class Board : MonoBehaviour
         SpriteRenderer spriteRenderer = cp.GetComponent<SpriteRenderer>();
 
         return cp;
+    }
+
+    // Positioning
+    private void PositionAllCards()
+    {
+        for (int x = 0; x < TILE_COUNT_X; x++)
+            for (int y = 0; y < TILE_COUNT_Y; y++)
+                if(Cards[x, y] != null)
+                    PositionSingleCard(x, y, true);
+    }
+
+    private void PositionSingleCard(int x, int y, bool force = false)
+    {
+        Cards[x, y].currentX = x;
+        Cards[x, y].currentY = y;
+        Cards[x, y].transform.position = GetTileCenter(x, y);
+    }
+
+    private Vector3 GetTileCenter(int x, int y)
+    {
+        return new Vector3(x * tileSize, yOffSet, y * tileSize) - bounds + new Vector3(tileSize / 2, 0, tileSize / 2);
     }
 
     // Operations
