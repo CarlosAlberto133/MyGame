@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Board (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1595888500303032, guid: bec5b097ce3a840e4b09cd099b17c337, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4846723839890726, guid: bec5b097ce3a840e4b09cd099b17c337, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -354,6 +358,9 @@ MonoBehaviour:
   tileSize: 1
   yOffSet: 0.25
   boardCenter: {x: 0, y: 0, z: 0}
+  deathSize: 0.5
+  deathSpacing: 0.3275
+  dragOffset: 0.5
   prefabs:
   - {fileID: 7117073924328327837, guid: 70745716759d4794d8aa6b646710fa5f, type: 3}
   - {fileID: 2611293613107870473, guid: a1cf31d6fbc1df14f9f741b9516531ec, type: 3}

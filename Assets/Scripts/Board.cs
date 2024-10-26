@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Board : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class Board : MonoBehaviour
     [SerializeField] private float tileSize = 1.0f;
     [SerializeField] private float yOffSet = 0.2f;
     [SerializeField] private Vector3 boardCenter = Vector3.zero;
+    [SerializeField] private float deathSize = 0.3f;
+    [SerializeField] private float deathSpacing = 0.3f;
+    [SerializeField] private float dragOffset = 1.5f;
 
     [Header("Prefabs & Materials")]
     [SerializeField] private GameObject[] prefabs;
@@ -15,6 +19,9 @@ public class Board : MonoBehaviour
     // LOGIC
     private Cards[,] Cards;
     private Cards currentlyDragging;
+    private List<Vector2Int> avaiableMoves = new List<Vector2Int>();
+    private List<Cards> deadWhites = new List<Cards>();
+    private List<Cards> deadBlacks = new List<Cards>();
     private const int TILE_COUNT_X = 8;
     private const int TILE_COUNT_Y = 8;
     private GameObject[,] tiles;
@@ -39,7 +46,7 @@ public class Board : MonoBehaviour
 
         RaycastHit info;
         Ray ray = currentCamera.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(ray, out info, 100, LayerMask.GetMask("Tile", "Hover")))
+        if(Physics.Raycast(ray, out info, 100, LayerMask.GetMask("Tile", "Hover", "Hightlight")))
         {
             // Get the indexes of the tile i've hit
             Vector2Int hitPosition = LookupTileIndex(info.transform.gameObject);
@@ -54,7 +61,7 @@ public class Board : MonoBehaviour
             // If we were already hovering a tile, change the previous one
             if(currentHover != hitPosition)
             {
-                tiles[currentHover.x, currentHover.y].layer = LayerMask.NameToLayer("Tile");
+                tiles[currentHover.x, currentHover.y].layer = (ContainsValidMove(ref avaiableMoves, currentHover)) ? LayerMask.NameToLayer("Hightlight") : LayerMask.NameToLayer("Tile");
                 currentHover = hitPosition;
                 tiles[hitPosition.x, hitPosition.y].layer = LayerMask.NameToLayer("Hover");
             }
@@ -68,6 +75,10 @@ public class Board : MonoBehaviour
                     if(true)
                     {
                         currentlyDragging = Cards[hitPosition.x, hitPosition.y];
+
+                        // Get a list of where i can go, hightlight tiles as well
+                        avaiableMoves = currentlyDragging.GetAvailableMoves(ref Cards, TILE_COUNT_X, TILE_COUNT_Y);
+                        HightlightTiles();
                     }
                 }
             }
@@ -79,21 +90,17 @@ public class Board : MonoBehaviour
 
                 bool validMove = MoveTo(currentlyDragging, hitPosition.x, hitPosition.y);
                 if(!validMove)
-                {
                     currentlyDragging.SetPosition(GetTileCenter(previousPosition.x, previousPosition.y));
-                    currentlyDragging = null;
-                }
-                else
-                {
-                    currentlyDragging = null;
-                }
+
+                currentlyDragging = null;
+                RemoveHightlightTiles();
             }
         }
         else
         {
             if(currentHover != -Vector2Int.one)
             {
-                tiles[currentHover.x, currentHover.y].layer = LayerMask.NameToLayer("Tile");
+                tiles[currentHover.x, currentHover.y].layer = (ContainsValidMove(ref avaiableMoves, currentHover)) ? LayerMask.NameToLayer("Hightlight") : LayerMask.NameToLayer("Tile");
                 currentHover = -Vector2Int.one;
             }
 
@@ -101,7 +108,17 @@ public class Board : MonoBehaviour
             {
                 currentlyDragging.SetPosition(GetTileCenter(currentlyDragging.currentX, currentlyDragging.currentY));
                 currentlyDragging = null;
+                RemoveHightlightTiles();
             }
+        }
+
+        // If we're dragging a card
+        if(currentlyDragging)
+        {
+            Plane horizontalPlane = new Plane(Vector3.up, Vector3.up * yOffSet);
+            float distance = 0.0f;
+            if(horizontalPlane.Raycast(ray, out distance))
+                currentlyDragging.SetPosition(ray.GetPoint(distance) + Vector3.up * dragOffset);
         }
     }
 
@@ -215,7 +232,31 @@ public class Board : MonoBehaviour
         return new Vector3(x * tileSize, yOffSet, y * tileSize) - bounds + new Vector3(tileSize / 2, 0, tileSize / 2);
     }
 
+    // Hightlight Tiles
+    private void HightlightTiles()
+    {
+        for (int i = 0; i < avaiableMoves.Count; i ++)
+            tiles[avaiableMoves[i].x, avaiableMoves[i].y].layer = LayerMask.NameToLayer("Hightlight");
+    }
+
+    private void RemoveHightlightTiles()
+    {
+        for (int i = 0; i < avaiableMoves.Count; i ++)
+            tiles[avaiableMoves[i].x, avaiableMoves[i].y].layer = LayerMask.NameToLayer("Tile");
+
+        avaiableMoves.Clear();
+    }
+
     // Operations
+    private bool ContainsValidMove(ref List<Vector2Int> moves, Vector2 pos)
+    {
+        for (int i = 0; i < moves.Count; i++)
+            if(moves[i].x == pos.x && moves[i].y == pos.y)
+                return true;
+
+        return false;
+    }
+
     private Vector2Int LookupTileIndex(GameObject hitInfo)
     {
         for (int x = 0; x < TILE_COUNT_X; x++)
@@ -228,6 +269,9 @@ public class Board : MonoBehaviour
 
     private bool MoveTo(Cards cp, int x, int y)
     {
+        if(!ContainsValidMove(ref avaiableMoves, new Vector2(x, y)))
+            return false;
+
         Vector2Int previousPosition = new Vector2Int(cp.currentX, cp.currentY);
 
         // Is ther another card on the target position?
@@ -236,8 +280,28 @@ public class Board : MonoBehaviour
             Cards ocp = Cards[x, y];
 
             if(cp.team == ocp.team)
-            {
                 return false;
+
+            // If its the enemy team
+            if(ocp.team == 0)
+            {
+                deadWhites.Add(ocp);
+                ocp.SetScale(Vector3.one * deathSize);
+                ocp.SetPosition(
+                    new Vector3(8 * tileSize, yOffSet, -1 * tileSize)
+                    -bounds 
+                    + new Vector3(tileSize / 2, 0, tileSize / 2)
+                    + (Vector3.forward * deathSpacing) * deadWhites.Count);
+            }
+            else
+            {
+                deadBlacks.Add(ocp);
+                ocp.SetScale(Vector3.one * deathSize);
+                ocp.SetPosition(
+                    new Vector3(-1 * tileSize, yOffSet, 8 * tileSize)
+                    -bounds 
+                    + new Vector3(tileSize / 2, 0, tileSize / 2)
+                    + (Vector3.back * deathSpacing) * deadBlacks.Count);
             }
         }
 
