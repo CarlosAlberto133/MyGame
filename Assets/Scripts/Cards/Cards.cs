@@ -23,6 +23,14 @@ public class Cards : MonoBehaviour
     private Vector3 desiredPosition;
     private Vector3 desiredScale = Vector3.one;
 
+    // Função para rotacionar as cartas pretas para ficarem de frente para as brancas
+    // o erro ocorre por que no vídeo ele gira as peças pretas, no caso das cartas está ocorrendo um bug ao girar
+    // então deixar comentado para lembrar de girar as cartas pretas.
+    // private void Start()
+    // {
+    //   transform.rotation = Quaternion.Euler((team == 0) ? Vector3.zero : new Vector3(0, 180, 0));
+    // }
+
     private void Update()
     {
         transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * 10);

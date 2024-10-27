@@ -11,6 +11,7 @@ public class Board : MonoBehaviour
     [SerializeField] private float deathSize = 0.3f;
     [SerializeField] private float deathSpacing = 0.3f;
     [SerializeField] private float dragOffset = 1.5f;
+    [SerializeField] private GameObject victoryScreen;
 
     [Header("Prefabs & Materials")]
     [SerializeField] private GameObject[] prefabs;
@@ -28,9 +29,12 @@ public class Board : MonoBehaviour
     private Camera currentCamera;
     private Vector2Int currentHover;
     private Vector3 bounds;
+    private bool isWhiteTurn;
 
     private void Awake()
     {
+        isWhiteTurn = true;
+
         GenerateAllTiles(tileSize, TILE_COUNT_X, TILE_COUNT_Y);
         SpawnAllCards();
         PositionAllCards();
@@ -72,7 +76,7 @@ public class Board : MonoBehaviour
                 if(Cards[hitPosition.x, hitPosition.y] != null)
                 {
                     // Is it our turn?
-                    if(true)
+                    if((Cards[hitPosition.x, hitPosition.y].team == 0 && isWhiteTurn) || (Cards[hitPosition.x, hitPosition.y].team == 1 && !isWhiteTurn))
                     {
                         currentlyDragging = Cards[hitPosition.x, hitPosition.y];
 
@@ -247,6 +251,60 @@ public class Board : MonoBehaviour
         avaiableMoves.Clear();
     }
 
+    // Checkmate - função de checkmate para terminar o jogo
+    private void CheckMate(int team)
+    {
+        DisplayVictory(team);
+    }
+
+    private void DisplayVictory(int winningTeam)
+    {
+        victoryScreen.SetActive(true);
+        victoryScreen.transform.GetChild(winningTeam).gameObject.SetActive(true);
+    }
+
+    public void OnResetButton()
+    {
+        // UI
+        victoryScreen.transform.GetChild(0).gameObject.SetActive(false);
+        victoryScreen.transform.GetChild(1).gameObject.SetActive(false);
+        victoryScreen.SetActive(false);
+
+        // Fields reset
+        currentlyDragging = null;
+        avaiableMoves = new List<Vector2Int>();
+
+        // Clean up
+        for (int x = 0; x < TILE_COUNT_X; x++)
+        {
+            for (int y = 0; y < TILE_COUNT_Y; y++)
+            {
+                if(Cards[x, y] != null)
+                    Destroy(Cards[x, y].gameObject);
+
+                Cards[x, y] = null;
+            }
+        }
+
+        for (int i = 0; i < deadWhites.Count; i++)
+            Destroy(deadWhites[i].gameObject);
+
+        for (int i = 0; i < deadBlacks.Count; i++)
+            Destroy(deadBlacks[i].gameObject);
+
+        deadWhites.Clear();
+        deadBlacks.Clear();
+
+        SpawnAllCards();
+        PositionAllCards();
+        isWhiteTurn = true;
+    }
+
+    public void OnExitButton()
+    {
+        Application.Quit();
+    }
+
     // Operations
     private bool ContainsValidMove(ref List<Vector2Int> moves, Vector2 pos)
     {
@@ -285,6 +343,9 @@ public class Board : MonoBehaviour
             // If its the enemy team
             if(ocp.team == 0)
             {
+                if(ocp.type == CardPieceType.King) // Esse if termina o jogo caso a carta king morra
+                    CheckMate(1);                  // Mudar a lógica para acabar o jogo quando o hp chegar a 0
+
                 deadWhites.Add(ocp);
                 ocp.SetScale(Vector3.one * deathSize);
                 ocp.SetPosition(
@@ -295,6 +356,9 @@ public class Board : MonoBehaviour
             }
             else
             {
+                if(ocp.type == CardPieceType.King)  // Esse if termina o jogo caso a carta king morra
+                    CheckMate(0);                   // Mudar a lógica para acabar o jogo quando o hp chegar a 0
+
                 deadBlacks.Add(ocp);
                 ocp.SetScale(Vector3.one * deathSize);
                 ocp.SetPosition(
@@ -309,6 +373,8 @@ public class Board : MonoBehaviour
         Cards[previousPosition.x, previousPosition.y] = null;
 
         PositionSingleCard(x, y);
+
+        isWhiteTurn = !isWhiteTurn;
 
         return true;
     }
