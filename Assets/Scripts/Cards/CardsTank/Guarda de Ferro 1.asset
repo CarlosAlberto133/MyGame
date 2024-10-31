@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c784dc74af793b4683a283f82eabe13, type: 3}
+  m_Name: Guarda de Ferro 1
+  m_EditorClassIdentifier: 
+  cardName: Guarda de Ferro
+  description: 1 vez por turno, recebe o ataque no lugar da outra carta atacada,
+    se houver um healer em campo, receba 30% a menos
+  Art: {fileID: 21300000, guid: d53b9d84dc4c8fa43b0f98ab871e06e2, type: 3}
+  manaOrGoldCost: 4
+  attack: 2
+  shield: 6
+  health: 5

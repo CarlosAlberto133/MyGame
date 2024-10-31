@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c784dc74af793b4683a283f82eabe13, type: 3}
+  m_Name: "Sentinela de A\xE7o"
+  m_EditorClassIdentifier: 
+  cardName: "Sentinela de A\xE7o"
+  description: Pode assumir a frente do ataque caso qualquer outra carta seja atacada
+  Art: {fileID: 21300000, guid: 0b30b02173f97fb4c9d7b8741bb3f864, type: 3}
+  manaOrGoldCost: 2
+  attack: 1
+  shield: 3
+  health: 3

@@ -36,8 +36,8 @@ public class Board : MonoBehaviour
         isWhiteTurn = true;
 
         GenerateAllTiles(tileSize, TILE_COUNT_X, TILE_COUNT_Y);
-        SpawnAllCards();
-        PositionAllCards();
+        //SpawnAllCards();
+        //PositionAllCards();
     }
 
     private void Update()
@@ -166,7 +166,7 @@ public class Board : MonoBehaviour
     }
 
     // Spawning of the cards
-    private void SpawnAllCards()
+    /*private void SpawnAllCards()
     {
         Cards = new Cards[TILE_COUNT_X, TILE_COUNT_Y];
 
@@ -195,7 +195,7 @@ public class Board : MonoBehaviour
         Cards[7,7] = SpawnSingleCard(CardPieceType.Rook, blackTeam);
         for (int i = 0; i < TILE_COUNT_X; i++)
             Cards[i,6] = SpawnSingleCard(CardPieceType.Pawn, blackTeam);
-    }
+    }*/
 
     private Cards SpawnSingleCard(CardPieceType type, int team)
     {
@@ -295,8 +295,8 @@ public class Board : MonoBehaviour
         deadWhites.Clear();
         deadBlacks.Clear();
 
-        SpawnAllCards();
-        PositionAllCards();
+        //SpawnAllCards();
+        //PositionAllCards();
         isWhiteTurn = true;
     }
 
