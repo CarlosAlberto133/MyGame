@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class CardDisplay : MonoBehaviour
@@ -15,15 +13,22 @@ public class CardDisplay : MonoBehaviour
     public Text shieldText;
     public Text healthText;
 
-    // Start is called before the first frame update
     void Start()
     {
-        nameText.text = card.cardName;
-        descriptionText.text = card.description;
-        ArtImage.sprite = card.Art;
-        manaOrGoldCostText.text = card.manaOrGoldCost.ToString();
-        attackText.text = card.attack.ToString();
-        shieldText.text = card.shield.ToString();
-        healthText.text = card.health.ToString();
+        UpdateCardInfo();
+    }
+
+    public void UpdateCardInfo() // Este é o método que era chamado de Setup antes
+    {
+        if (card != null)
+        {
+            nameText.text = card.cardName;
+            descriptionText.text = card.description;
+            ArtImage.sprite = card.Art;
+            manaOrGoldCostText.text = card.manaOrGoldCost.ToString();
+            attackText.text = card.attack.ToString();
+            shieldText.text = card.shield.ToString();
+            healthText.text = card.health.ToString();
+        }
     }
 }

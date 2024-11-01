@@ -250,6 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 38309777}
   - component: {fileID: 38309778}
+  - component: {fileID: 38309779}
   m_Layer: 5
   m_Name: ColossoDeFerro
   m_TagString: Untagged
@@ -303,6 +304,19 @@ MonoBehaviour:
   attackText: {fileID: 338355502}
   shieldText: {fileID: 1372006469}
   healthText: {fileID: 39557935}
+--- !u!65 &38309779
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38309776}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &39557933
 GameObject:
   m_ObjectHideFlags: 0
@@ -2801,6 +2815,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1595888500303032, guid: bec5b097ce3a840e4b09cd099b17c337, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4846723839890726, guid: bec5b097ce3a840e4b09cd099b17c337, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3193,6 +3211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 342157755}
   - component: {fileID: 342157756}
+  - component: {fileID: 342157757}
   m_Layer: 5
   m_Name: SentinelaDaTempestade
   m_TagString: Untagged
@@ -3246,6 +3265,19 @@ MonoBehaviour:
   attackText: {fileID: 1664054888}
   shieldText: {fileID: 166108466}
   healthText: {fileID: 1411011766}
+--- !u!65 &342157757
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342157754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &344011844
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,6 +3674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 368022286}
   - component: {fileID: 368022287}
+  - component: {fileID: 368022288}
   m_Layer: 5
   m_Name: ProtetorSupremo
   m_TagString: Untagged
@@ -3695,6 +3728,19 @@ MonoBehaviour:
   attackText: {fileID: 1955912077}
   shieldText: {fileID: 981522428}
   healthText: {fileID: 477355304}
+--- !u!65 &368022288
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368022285}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &370391636
 GameObject:
   m_ObjectHideFlags: 0
@@ -3705,6 +3751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 370391637}
   - component: {fileID: 370391638}
+  - component: {fileID: 370391639}
   m_Layer: 5
   m_Name: ArmaduraDoProtetor
   m_TagString: Untagged
@@ -3758,6 +3805,19 @@ MonoBehaviour:
   attackText: {fileID: 2102997935}
   shieldText: {fileID: 2129150023}
   healthText: {fileID: 1001832594}
+--- !u!65 &370391639
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370391636}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &380648730
 GameObject:
   m_ObjectHideFlags: 0
@@ -5574,6 +5634,7 @@ GameObject:
   m_Component:
   - component: {fileID: 525642600}
   - component: {fileID: 525642601}
+  - component: {fileID: 525642602}
   m_Layer: 5
   m_Name: EscudoProtetor
   m_TagString: Untagged
@@ -5627,6 +5688,19 @@ MonoBehaviour:
   attackText: {fileID: 1439193085}
   shieldText: {fileID: 548979580}
   healthText: {fileID: 883952106}
+--- !u!65 &525642602
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525642599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &548979578
 GameObject:
   m_ObjectHideFlags: 0
@@ -5892,6 +5966,7 @@ GameObject:
   m_Component:
   - component: {fileID: 570819699}
   - component: {fileID: 570819700}
+  - component: {fileID: 570819701}
   m_Layer: 5
   m_Name: DefensorIniciante
   m_TagString: Untagged
@@ -5945,6 +6020,19 @@ MonoBehaviour:
   attackText: {fileID: 1938497250}
   shieldText: {fileID: 1209750392}
   healthText: {fileID: 506974379}
+--- !u!65 &570819701
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570819698}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &580971224
 GameObject:
   m_ObjectHideFlags: 0
@@ -7332,6 +7420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 816307781}
   - component: {fileID: 816307782}
+  - component: {fileID: 816307783}
   m_Layer: 5
   m_Name: EscudoDoValor
   m_TagString: Untagged
@@ -7385,6 +7474,19 @@ MonoBehaviour:
   attackText: {fileID: 944635917}
   shieldText: {fileID: 1890340944}
   healthText: {fileID: 1834192470}
+--- !u!65 &816307783
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816307780}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &825245338
 GameObject:
   m_ObjectHideFlags: 0
@@ -7749,6 +7851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 837483077}
   - component: {fileID: 837483078}
+  - component: {fileID: 837483079}
   m_Layer: 5
   m_Name: GuardaDeFerro
   m_TagString: Untagged
@@ -7802,6 +7905,19 @@ MonoBehaviour:
   attackText: {fileID: 1998627223}
   shieldText: {fileID: 396197840}
   healthText: {fileID: 122574351}
+--- !u!65 &837483079
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837483076}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &862434168
 GameObject:
   m_ObjectHideFlags: 0
@@ -8170,6 +8286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 908061048}
   - component: {fileID: 908061049}
+  - component: {fileID: 908061050}
   m_Layer: 5
   m_Name: "Campe\xE3oImbat\xEDvel"
   m_TagString: Untagged
@@ -8223,6 +8340,19 @@ MonoBehaviour:
   attackText: {fileID: 1883722843}
   shieldText: {fileID: 251948535}
   healthText: {fileID: 1823757939}
+--- !u!65 &908061050
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908061047}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &914108242
 GameObject:
   m_ObjectHideFlags: 0
@@ -9905,6 +10035,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1065471034}
   - component: {fileID: 1065471035}
+  - component: {fileID: 1065471036}
   m_Layer: 5
   m_Name: MuralhaDeFerro
   m_TagString: Untagged
@@ -9958,6 +10089,19 @@ MonoBehaviour:
   attackText: {fileID: 1395626254}
   shieldText: {fileID: 397862914}
   healthText: {fileID: 344011846}
+--- !u!65 &1065471036
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065471033}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1067765945
 GameObject:
   m_ObjectHideFlags: 0
@@ -10047,6 +10191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1078334643}
   - component: {fileID: 1078334644}
+  - component: {fileID: 1078334645}
   m_Layer: 5
   m_Name: "EscudoDaResist\xEAncia"
   m_TagString: Untagged
@@ -10100,6 +10245,19 @@ MonoBehaviour:
   attackText: {fileID: 54877204}
   shieldText: {fileID: 832306251}
   healthText: {fileID: 773358503}
+--- !u!65 &1078334645
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078334642}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1092685224
 GameObject:
   m_ObjectHideFlags: 0
@@ -10377,6 +10535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1116374456}
   - component: {fileID: 1116374457}
+  - component: {fileID: 1116374458}
   m_Layer: 5
   m_Name: BarreiraLeve
   m_TagString: Untagged
@@ -10430,6 +10589,19 @@ MonoBehaviour:
   attackText: {fileID: 131820173}
   shieldText: {fileID: 1039742347}
   healthText: {fileID: 305565782}
+--- !u!65 &1116374458
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116374455}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1119478073
 GameObject:
   m_ObjectHideFlags: 0
@@ -12397,6 +12569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1400190119}
   - component: {fileID: 1400190120}
+  - component: {fileID: 1400190121}
   m_Layer: 5
   m_Name: "DefensorInquebr\xE1vel"
   m_TagString: Untagged
@@ -12450,6 +12623,19 @@ MonoBehaviour:
   attackText: {fileID: 1020193751}
   shieldText: {fileID: 815571323}
   healthText: {fileID: 723879438}
+--- !u!65 &1400190121
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400190118}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1411011764
 GameObject:
   m_ObjectHideFlags: 0
@@ -13305,6 +13491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1486914963}
   - component: {fileID: 1486914964}
+  - component: {fileID: 1486914965}
   m_Layer: 5
   m_Name: "EscudoDoCampe\xE3o"
   m_TagString: Untagged
@@ -13358,6 +13545,19 @@ MonoBehaviour:
   attackText: {fileID: 2083600732}
   shieldText: {fileID: 4939131}
   healthText: {fileID: 753228703}
+--- !u!65 &1486914965
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486914962}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1492358840
 GameObject:
   m_ObjectHideFlags: 0
@@ -13579,6 +13779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1524678097}
   - component: {fileID: 1524678098}
+  - component: {fileID: 1524678099}
   m_Layer: 5
   m_Name: "Guardi\xE3oAncestral"
   m_TagString: Untagged
@@ -13632,6 +13833,19 @@ MonoBehaviour:
   attackText: {fileID: 1733795771}
   shieldText: {fileID: 251603199}
   healthText: {fileID: 801366157}
+--- !u!65 &1524678099
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524678096}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1544762843
 GameObject:
   m_ObjectHideFlags: 0
@@ -14597,6 +14811,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1665147307}
   - component: {fileID: 1665147308}
+  - component: {fileID: 1665147309}
   m_Layer: 5
   m_Name: "Basti\xE3oDeTit\xE2nio"
   m_TagString: Untagged
@@ -14650,6 +14865,19 @@ MonoBehaviour:
   attackText: {fileID: 914108244}
   shieldText: {fileID: 177242666}
   healthText: {fileID: 1573457439}
+--- !u!65 &1665147309
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665147306}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1675604177
 GameObject:
   m_ObjectHideFlags: 0
@@ -15364,6 +15592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1728734488}
   - component: {fileID: 1728734489}
+  - component: {fileID: 1728734490}
   m_Layer: 5
   m_Name: "PeleDeA\xE7o"
   m_TagString: Untagged
@@ -15417,6 +15646,19 @@ MonoBehaviour:
   attackText: {fileID: 511099054}
   shieldText: {fileID: 516666650}
   healthText: {fileID: 1974192286}
+--- !u!65 &1728734490
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728734487}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1729955042
 GameObject:
   m_ObjectHideFlags: 0
@@ -15427,6 +15669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1729955043}
   - component: {fileID: 1729955044}
+  - component: {fileID: 1729955045}
   m_Layer: 5
   m_Name: GuardaDeFerro
   m_TagString: Untagged
@@ -15480,6 +15723,19 @@ MonoBehaviour:
   attackText: {fileID: 160092829}
   shieldText: {fileID: 1687533940}
   healthText: {fileID: 1513564621}
+--- !u!65 &1729955045
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729955042}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1733795769
 GameObject:
   m_ObjectHideFlags: 0
@@ -16277,6 +16533,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1879453996}
+  - component: {fileID: 1879453997}
   m_Layer: 5
   m_Name: TankCards
   m_TagString: Untagged
@@ -16323,6 +16580,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1879453997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879453995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b1bdfb080be6a449ce32ceb48e835e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardSpacing: 150
+  yPosition: 0
+  zPosition: 0
 --- !u!1 &1882014719
 GameObject:
   m_ObjectHideFlags: 0
@@ -17312,6 +17584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1965357726}
   - component: {fileID: 1965357727}
+  - component: {fileID: 1965357728}
   m_Layer: 5
   m_Name: "Guardi\xE3oDaFronteira"
   m_TagString: Untagged
@@ -17365,6 +17638,19 @@ MonoBehaviour:
   attackText: {fileID: 1054960532}
   shieldText: {fileID: 1240290154}
   healthText: {fileID: 293650667}
+--- !u!65 &1965357728
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965357725}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1968123014
 GameObject:
   m_ObjectHideFlags: 0
@@ -17829,6 +18115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1994941694}
   - component: {fileID: 1994941695}
+  - component: {fileID: 1994941696}
   m_Layer: 5
   m_Name: "SentinelaDeA\xE7o"
   m_TagString: Untagged
@@ -17882,6 +18169,19 @@ MonoBehaviour:
   attackText: {fileID: 405004850}
   shieldText: {fileID: 1632234493}
   healthText: {fileID: 357106138}
+--- !u!65 &1994941696
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994941693}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1994969199
 GameObject:
   m_ObjectHideFlags: 0
