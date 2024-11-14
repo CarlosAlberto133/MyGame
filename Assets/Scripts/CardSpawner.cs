@@ -8,6 +8,13 @@ public class CardSpawner : MonoBehaviour
     [SerializeField] private float yPosition = 0f; // Altura das cartas
     [SerializeField] private float zPosition = 0f; // Profundidade das cartas
 
+    private CardHandManager handManager;
+
+    void Awake()
+    {
+        handManager = FindObjectOfType<CardHandManager>();
+    }
+
     private void Start()
     {
         ShowRandomCards(5);
@@ -51,6 +58,44 @@ public class CardSpawner : MonoBehaviour
             
             // Garante que a rotação está correta
             card.transform.localRotation = Quaternion.identity;
+
+            // Verifica se já tem algum collider
+            Collider boxCollider = card.GetComponent<BoxCollider>();
+            Collider2D boxCollider2D = card.GetComponent<BoxCollider2D>();
+
+            // Se não tem nenhum collider, adiciona um BoxCollider2D
+            if (!boxCollider && !boxCollider2D)
+            {
+                card.AddComponent<BoxCollider2D>();
+            }
+            // Se tem um BoxCollider 3D, vamos usá-lo em vez de adicionar um 2D
+            else if (boxCollider)
+            {
+                // Garante que o collider está ativo
+                boxCollider.enabled = true;
+            }
+
+            // Adiciona o componente de clique
+            if (!card.GetComponent<CardClickHandler>())
+            {
+                CardClickHandler clickHandler = card.AddComponent<CardClickHandler>();
+                clickHandler.handManager = handManager;
+            }
+        }
+    }
+
+    public class CardClickHandler : MonoBehaviour
+    {
+        public CardHandManager handManager;
+        
+        private void OnMouseDown()
+        {
+            if (handManager && handManager.CanAddCardToHand())
+            {
+                handManager.AddCardToHand(gameObject);
+                // Remove o próprio componente após ser adicionado à mão
+                Destroy(this);
+            }
         }
     }
 
