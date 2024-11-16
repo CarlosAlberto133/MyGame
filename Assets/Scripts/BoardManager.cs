@@ -105,44 +105,36 @@ public class BoardManager : MonoBehaviour
     {
         if (!CanPlaceCardAt(x, z))
             return;
-
         Vector3 position = tiles[x, z].transform.position;
         position.y += 0.4f; // Ajusta a altura da carta acima do tile
-
         // Configura a posição e rotação da carta
         card.transform.position = position;
         card.transform.rotation = Quaternion.Euler(90f, 0f, 0f); // Inclina a carta para melhor visualização
-        card.transform.SetParent(transform);
-
+        card.transform.SetParent(tiles[x, z].transform, true);
         // Configura o Canvas para World Space
         Canvas cardCanvas = card.GetComponent<Canvas>();
         if (cardCanvas == null)
         {
             cardCanvas = card.AddComponent<Canvas>();
         }
-        cardCanvas.renderMode = RenderMode.WorldSpace;
-        cardCanvas.worldCamera = Camera.main;
-
+        //cardCanvas.renderMode = RenderMode.WorldSpace;
+        //cardCanvas.worldCamera = Camera.main;
         // Ajusta a escala
         float cardScale = tileSize * 0.01f; // Um pouco menor que o tile
         card.transform.localScale = new Vector3(cardScale, cardScale, 1f);
-
         // Configura o RectTransform
         RectTransform rectTransform = card.GetComponent<RectTransform>();
         if (rectTransform != null)
         {
             rectTransform.sizeDelta = new Vector2(100f, 100f);
         }
-
         // Configura o CanvasScaler
         CanvasScaler scaler = card.GetComponent<CanvasScaler>();
         if (scaler == null)
         {
             scaler = card.AddComponent<CanvasScaler>();
         }
-        scaler.scaleFactor = 1f;
-        scaler.dynamicPixelsPerUnit = 100f;
-
+        cardCanvas.sortingOrder = 1;
         // Ajusta o CanvasGroup
         CanvasGroup canvasGroup = card.GetComponent<CanvasGroup>();
         if (canvasGroup != null)
@@ -151,24 +143,21 @@ public class BoardManager : MonoBehaviour
             canvasGroup.blocksRaycasts = true;
             canvasGroup.interactable = true;
         }
-
         // Garante que os renderers estão ativos
         var renderers = card.GetComponentsInChildren<Renderer>();
         foreach (var renderer in renderers)
         {
             renderer.enabled = true;
         }
-
         // Registra a carta na posição
         placedCards[x, z] = card;
-
         var cardMovement = card.GetComponent<CardMovement>();
         if (cardMovement != null)
         {
             cardMovement.OnCardPlaced(x, z);
         }
     }
-    
+
     public Vector2Int GetTileCoordinatesFromPosition(Vector3 worldPosition)
     {
         float totalWidth = (boardWidth * tileSize) + ((boardWidth - 1) * spacing);

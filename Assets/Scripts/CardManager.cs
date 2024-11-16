@@ -7,8 +7,8 @@ public class CardManager : MonoBehaviour
     [SerializeField] private GameObject[] cardPrefabs;
     [SerializeField] private Transform cardPanel;
     [SerializeField] private int initialHandSize = 5;
-    [SerializeField] private float cardSpacing = 2f;
-    [SerializeField] private Vector2 cardSize = new Vector2(350f, 500f);
+    [SerializeField] private float cardSpacing = 50f;
+    [SerializeField] private Vector2 cardSize = new Vector2(100f, 100f);
 
     private List<GameObject> currentHand = new List<GameObject>();
 
@@ -67,10 +67,6 @@ public class CardManager : MonoBehaviour
 
         // Ajusta o tamanho da carta - ADICIONE ESTE BLOCO
         RectTransform rectTransform = newCard.GetComponent<RectTransform>();
-        if (rectTransform)
-        {
-            rectTransform.sizeDelta = cardSize;
-        }
 
         if (!newCard.GetComponent<CanvasGroup>())
         {
@@ -81,6 +77,8 @@ public class CardManager : MonoBehaviour
         {
             newCard.AddComponent<DraggableCard>();
         }
+
+        newCard.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 0);
 
         currentHand.Add(newCard);
     }

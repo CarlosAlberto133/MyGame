@@ -51,13 +51,13 @@ public class CardSpawner : MonoBehaviour
 
             // Calcula a nova posição
             float xPos = startX + (cardSpacing * i);
-            Vector3 newPosition = new Vector3(xPos, yPosition, zPosition);
-            
+            Vector3 newPosition = new Vector3(yPosition,xPos, zPosition);
+
             // Aplica a nova posição
             card.transform.localPosition = newPosition;
-            
+
             // Garante que a rotação está correta
-            card.transform.localRotation = Quaternion.identity;
+            card.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 50, -90);
 
             // Verifica se já tem algum collider
             Collider boxCollider = card.GetComponent<BoxCollider>();
@@ -87,7 +87,7 @@ public class CardSpawner : MonoBehaviour
     public class CardClickHandler : MonoBehaviour
     {
         public CardHandManager handManager;
-        
+
         private void OnMouseDown()
         {
             if (handManager && handManager.CanAddCardToHand())
